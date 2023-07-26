@@ -1,0 +1,43 @@
+From 2bcbb7711e83df2a66b0c629f60d4a40fd5adff9 Mon Sep 17 00:00:00 2001
+From: p_raveen <praveen.singh@m2pfintech.com>
+Date: Wed, 26 Jul 2023 17:49:05 +0530
+Subject: [PATCH] Fix: Describe your changes briefly here
+
+---
+ packages/grid/x-data-grid-pro/src/DataGridPro/DataGridPro.tsx | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/packages/grid/x-data-grid-pro/src/DataGridPro/DataGridPro.tsx b/packages/grid/x-data-grid-pro/src/DataGridPro/DataGridPro.tsx
+index 2044cd537..b62741fd4 100644
+--- a/packages/grid/x-data-grid-pro/src/DataGridPro/DataGridPro.tsx
++++ b/packages/grid/x-data-grid-pro/src/DataGridPro/DataGridPro.tsx
+@@ -15,10 +15,8 @@ import { useDataGridProComponent } from './useDataGridProComponent';
+ import { DataGridProProps } from '../models/dataGridProProps';
+ import { useDataGridProProps } from './useDataGridProProps';
+ import { DataGridProVirtualScroller } from '../components/DataGridProVirtualScroller';
+-import { getReleaseInfo } from '../utils/releaseInfo';
+ import { gridPinnedColumnsSelector } from '../hooks/features/columnPinning/gridColumnPinningSelector';
+ 
+-const releaseInfo = getReleaseInfo();
+ 
+ const DataGridProRaw = React.forwardRef(function DataGridPro<R extends GridValidRowModel>(
+   inProps: DataGridProProps<R>,
+@@ -26,7 +24,6 @@ const DataGridProRaw = React.forwardRef(function DataGridPro<R extends GridValid
+ ) {
+   const props = useDataGridProProps(inProps);
+   const privateApiRef = useDataGridProComponent(props.apiRef, props);
+-  useLicenseVerifier('x-data-grid-pro', releaseInfo);
+ 
+   const pinnedColumns = useGridSelector(privateApiRef, gridPinnedColumnsSelector);
+ 
+@@ -44,7 +41,6 @@ const DataGridProRaw = React.forwardRef(function DataGridPro<R extends GridValid
+           VirtualScrollerComponent={DataGridProVirtualScroller}
+           ColumnHeadersProps={{ pinnedColumns }}
+         >
+-          <Watermark packageName="x-data-grid-pro" releaseInfo={releaseInfo} />
+         </GridBody>
+         <GridFooterPlaceholder />
+       </GridRoot>
+-- 
+2.39.2 (Apple Git-143)
+
